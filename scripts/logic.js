@@ -8,6 +8,7 @@ container.style.gridTemplateRows = `repeat(${dims}, 1fr)`;
 for (let i = 0; i < Math.pow(dims, 2); i++) {
 	const divs = document.createElement("div");
 	divs.id = `div${i}`;
+    divs.classList.add("highlight");
 	divs.textContent = `${i}`;
 	container.appendChild(divs);
 }
