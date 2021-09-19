@@ -1,5 +1,13 @@
 const container = document.querySelector('#container');
-const dims = 8;
+const reset = document.querySelector('#reset');
+const dimensionSelector = document.querySelector('#dims');
+let dims = 8;
+dimensionSelector.addEventListener('change', function () {
+	dims = this.value;
+	container.style.gridTemplateColumns = `repeat(${dims}, 1fr)`;
+	container.style.gridTemplateRows = `repeat(${dims}, 1fr)`;
+	console.log(this.value);
+});
 
 container.style.gridTemplateColumns = `repeat(${dims}, 1fr)`;
 container.style.gridTemplateRows = `repeat(${dims}, 1fr)`;
@@ -31,4 +39,7 @@ for (let i = 0; i < Math.pow(dims, 2); i++) {
 				break;
 		}
 	};
+	reset.addEventListener('click', function () {
+		divs.style.backgroundColor = 'rgb(255, 255, 255)';
+	});
 }
