@@ -5,9 +5,6 @@ const colorfulSelector = document.querySelector('#colorful');
 const bwSelector = document.querySelector('#blackAndWhite');
 let dims = 8;
 
-container.style.gridTemplateColumns = `repeat(${dims}, 1fr)`;
-container.style.gridTemplateRows = `repeat(${dims}, 1fr)`;
-
 function setDimensions() {
 	dims = dimensionSelector.value;
 	container.style.gridTemplateColumns = `repeat(${dims}, 1fr)`;
