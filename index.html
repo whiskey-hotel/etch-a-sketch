@@ -21,7 +21,7 @@
 		<header>
 			<h1>ETCH-A-SKETCH</h1>
 		</header>
-		<main >
+		<main>
 			<div id="container"></div>
 		</main>
 		<footer>
@@ -33,6 +33,13 @@
 				<option value="32">32 x 32</option>
 				<option value="64">64 x 64</option>
 			</select>
+			<br />
+			<form id="colorSelection">
+				<input type="radio" name="color" id="blackAndWhite" checked/>
+				<label for="blackAndWhite">Black & White</label>
+				<input type="radio" name="color" id="colorful" />
+				<label for="colorful">Colorful</label>
+			</form>
 		</footer>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

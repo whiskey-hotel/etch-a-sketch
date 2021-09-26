@@ -1,7 +1,10 @@
 const container = document.querySelector('#container');
 const reset = document.querySelector('#reset');
 const dimensionSelector = document.querySelector('#dims');
+const colorfulSelector = document.querySelector('#colorful');
+const bwSelector = document.querySelector('#blackAndWhite');
 let dims = 8;
+
 container.style.gridTemplateColumns = `repeat(${dims}, 1fr)`;
 container.style.gridTemplateRows = `repeat(${dims}, 1fr)`;
 
@@ -11,42 +14,61 @@ function setDimensions() {
 	container.style.gridTemplateRows = `repeat(${dims}, 1fr)`;
 }
 
-function createDivs(dims) {
-	for (let i = 0; i < Math.pow(dims, 2); i++) {
+function createDivs(dimensions) {
+	for (let i = 0; i < Math.pow(dimensions, 2); i++) {
 		const tempDivs = document.createElement('div');
 		tempDivs.id = `div${i}`;
 		tempDivs.classList.add('highlight');
+		tempDivs.style.filter = `brightness(${100}%)`;
 		tempDivs.addEventListener('mouseover', function () {
-			blackAndWhiteDivs(tempDivs);
+			if (bwSelector.checked) {
+				blackAndWhiteDivs(tempDivs);
+			} else if (colorfulSelector.checked) {
+				colorful(tempDivs);
+			}
+			divBrightness(tempDivs);
 		});
-		tempDivs.style.backgroundColor = 'rgb(255, 255, 255)';
 		container.appendChild(tempDivs);
 	}
 }
 
-function blackAndWhiteDivs(divs1) {
-	switch (divs1.style.backgroundColor) {
-		case 'rgb(255, 255, 255)':
-			divs1.style.backgroundColor = 'rgb(204, 204, 204)';
+function blackAndWhiteDivs(divsToBW) {
+	if (divsToBW.style.backgroundColor == '') {
+		divsToBW.style.backgroundColor = 'rgb(204, 204, 204)';
+	}
+}
+
+function colorful(divsToColor) {
+	let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+	if (divsToColor.style.backgroundColor == '') {
+		divsToColor.style.backgroundColor = '#' + randomColor;
+	}
+}
+
+function divBrightness(divsToDarken) {
+	switch (divsToDarken.style.filter) {
+		case `brightness(${100}%)`:
+			divsToDarken.style.filter = `brightness(${80}%)`;
 			break;
-		case 'rgb(204, 204, 204)':
-			divs1.style.backgroundColor = 'rgb(153, 153, 153)';
+		case `brightness(${80}%)`:
+			divsToDarken.style.filter = `brightness(${60}%)`;
 			break;
-		case 'rgb(153, 153, 153)':
-			divs1.style.backgroundColor = 'rgb(102 ,102 ,102)';
+		case `brightness(${60}%)`:
+			divsToDarken.style.filter = `brightness(${40}%)`;
 			break;
-		case 'rgb(102, 102, 102)':
-			divs1.style.backgroundColor = 'rgb(51, 51, 51)';
+		case `brightness(${40}%)`:
+			divsToDarken.style.filter = `brightness(${20}%)`;
 			break;
-		case 'rgb(51, 51, 51)':
-			divs1.style.backgroundColor = 'rgb(0, 0, 0)';
+		case `brightness(${20}%)`:
+			divsToDarken.style.filter = `brightness(${0}%)`;
 			break;
 	}
 }
 
-function resetDivs(divs) {
-	for (let d of divs) {
-		d.style.backgroundColor = 'rgb(255, 255, 255)';
+function resetDivs(divsToClear) {
+	for (let d of divsToClear) {
+		d.style.backgroundColor = '';
+		d.style.filter = `brightness(${100}%)`;
 	}
 }
 
