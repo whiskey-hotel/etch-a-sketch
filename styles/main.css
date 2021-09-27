@@ -3,9 +3,14 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
 	background-image: linear-gradient(red, yellow);
+}
+
+h1 {
+	margin-bottom: 1em;
 }
 
 #container {
@@ -50,8 +55,8 @@ footer {
 
 @media screen and (max-width: 1200px) {
 	#container {
-		width: 25em;
-		height: 25em;
+		width: 28em;
+		height: 28em;
 	}
 	.header {
 		font-size: 2.5rem;
@@ -63,8 +68,8 @@ footer {
 
 @media screen and (max-width: 1024px) {
 	#container {
-		width: 25em;
-		height: 25em;
+		width: 28em;
+		height: 28em;
 	}
 	.header {
 		font-size: 2rem;
